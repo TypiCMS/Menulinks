@@ -8,7 +8,8 @@
         }
     ],
     "require": {
-        "typicms/core": "dev-master"
+        "typicms/core": "dev-master",
+        "typicms/menus": "dev-master"
     },
     "autoload": {
         "classmap": [

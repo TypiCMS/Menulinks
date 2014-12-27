@@ -16,7 +16,7 @@
             "migrations"
         ],
         "psr-4": {
-            "TypiCMS\\Modules\\Menulinks\\": ""
+            "TypiCMS\\Modules\\Menulinks\\": "src/"
         }
     },
     "minimum-stability": "stable"

@@ -31,8 +31,13 @@ class ModuleProvider extends ServiceProvider
 
         // Add dirs
         View::addLocation(__DIR__ . '/../Views');
-        Lang::addNamespace('menulinks', __DIR__ . '/../lang');
-        Config::addNamespace('menulinks', __DIR__ . '/../config');
+        $this->loadTranslationsFrom(__DIR__ . '/../lang', 'menulinks');
+        $this->publishes([
+            __DIR__ . '/../config/' => config_path('typicms/menulinks'),
+        ], 'config');
+        $this->publishes([
+            __DIR__ . '/../migrations/' => base_path('/database/migrations'),
+        ], 'migrations');
     }
 
     public function register()
@@ -56,10 +61,5 @@ class ModuleProvider extends ServiceProvider
                 $app->make('TypiCMS\Modules\Menulinks\Repositories\MenulinkInterface')
             );
         });
-
-        $app->before(function ($request, $response) {
-            require __DIR__ . '/../breadcrumbs.php';
-        });
-
     }
 }

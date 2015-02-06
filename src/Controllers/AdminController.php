@@ -44,7 +44,7 @@ class AdminController extends AdminNestedController
         $selectPages = $this->repository->getPagesForSelect();
         $selectModules = $this->repository->getModulesForSelect();
 
-        return view('menulinks.admin.create')
+        return view('menulinks::admin.create')
             ->withMenu($parent)
             ->with('selectPages', $selectPages)
             ->with('selectModules', $selectModules)
@@ -62,7 +62,7 @@ class AdminController extends AdminNestedController
     {
         $this->title['child'] = trans('menulinks::global.Edit');
 
-        return view('menulinks.admin.edit')
+        return view('menulinks::admin.edit')
             ->withMenu($parent)
             ->with('selectPages', $this->repository->getPagesForSelect())
             ->with('selectModules', $this->repository->getModulesForSelect())

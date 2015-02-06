@@ -1,25 +1,17 @@
 <?php
 namespace TypiCMS\Modules\Menulinks\Providers;
 
-use Lang;
-use View;
 use Config;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\Application;
-
-// Model
+use Illuminate\Support\ServiceProvider;
+use Lang;
 use TypiCMS\Modules\Menulinks\Models\Menulink;
-
-// Repo
-use TypiCMS\Modules\Menulinks\Repositories\EloquentMenulink;
-
-// Cache
 use TypiCMS\Modules\Menulinks\Repositories\CacheDecorator;
-use TypiCMS\Services\Cache\LaravelCache;
-
-// Form
+use TypiCMS\Modules\Menulinks\Repositories\EloquentMenulink;
 use TypiCMS\Modules\Menulinks\Services\Form\MenulinkForm;
 use TypiCMS\Modules\Menulinks\Services\Form\MenulinkFormLaravelValidator;
+use TypiCMS\Services\Cache\LaravelCache;
+use View;
 
 class ModuleProvider extends ServiceProvider
 {
@@ -30,7 +22,7 @@ class ModuleProvider extends ServiceProvider
         require __DIR__ . '/../routes.php';
 
         // Add dirs
-        View::addLocation(__DIR__ . '/../Views');
+        View::addNamespace('menulinks', __DIR__ . '/../views/');
         $this->loadTranslationsFrom(__DIR__ . '/../lang', 'menulinks');
         $this->publishes([
             __DIR__ . '/../config/' => config_path('typicms/menulinks'),

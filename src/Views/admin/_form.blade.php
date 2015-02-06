@@ -1,6 +1,6 @@
 @section('js')
-    {{ HTML::script(asset('//tinymce.cachefly.net/4.1/tinymce.min.js')) }}
-    {{ HTML::script(asset('js/admin/form.js')) }}
+    <script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>
+    <script src="{{ asset('js/admin/form.js') }}"></script>
 @stop
 
 @section('titleLeftButton')
@@ -16,10 +16,10 @@
 
 <div class="row">
 
-    {{ BootForm::hidden('id'); }}
-    {{ BootForm::hidden('menu_id', $menu->id); }}
-    {{ BootForm::hidden('position', $model->position ?: 0); }}
-    {{ BootForm::hidden('parent_id'); }}
+    {!! BootForm::hidden('id') !!}
+    {!! BootForm::hidden('menu_id', $menu->id) !!}
+    {!! BootForm::hidden('position', $model->position ?: 0) !!}
+    {!! BootForm::hidden('parent_id') !!}
 
     <div class="col-sm-6">
 
@@ -31,7 +31,7 @@
 
             <div class="tab-pane fade @if ($locale == $lang)in active @endif" id="{{ $lang }}">
                 <div class="form-group">
-                    {{ BootForm::text(trans('labels.title'), $lang.'[title]') }}
+                    {!! BootForm::text(trans('labels.title'), $lang.'[title]') !!}
                 </div>
                 <div class="form-group @if($errors->has($lang.'.uri'))has-error @endif">
                     {{ Form::label($lang.'[uri]', trans('validation.attributes.uri')) }}
@@ -46,7 +46,7 @@
                     {{ Form::text($lang.'[url]', $model->translate($lang)->url, array('class' => 'form-control', 'placeholder' => 'http://')) }}
                     {{ $errors->first($lang.'.url', '<p class="help-block">:message</p>') }}
                 </div>
-                {{ BootForm::checkbox(trans('labels.online'), $lang.'[status]') }}
+                {!! BootForm::checkbox(trans('labels.online'), $lang.'[status]') !!}
             </div>
 
             @endforeach

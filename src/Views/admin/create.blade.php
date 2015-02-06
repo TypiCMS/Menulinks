@@ -1,3 +1,5 @@
+@extends('core::admin.master')
+
 @section('main')
 
     <h1>
@@ -8,7 +10,7 @@
     </h1>
 
     {{ Form::open( array( 'route' => array('admin.menus.menulinks.index', $menu->id), 'files' => true, 'method' => 'post', 'role' => 'form' ) ) }}
-        @include('menulinks.admin._form')
+        @include('menulinks::admin._form')
     {{ Form::close() }}
 
 @stop

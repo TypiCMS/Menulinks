@@ -18,9 +18,6 @@ class ModuleProvider extends ServiceProvider
 
     public function boot()
     {
-        // Bring in the routes
-        require __DIR__ . '/../routes.php';
-
         // Add dirs
         View::addNamespace('menulinks', __DIR__ . '/../views/');
         $this->loadTranslationsFrom(__DIR__ . '/../lang', 'menulinks');
@@ -36,6 +33,11 @@ class ModuleProvider extends ServiceProvider
     {
 
         $app = $this->app;
+
+        /**
+         * Register route service provider
+         */
+        $app->register('TypiCMS\Modules\Menulinks\Providers\RouteServiceProvider');
 
         $app->bind('TypiCMS\Modules\Menulinks\Repositories\MenulinkInterface', function (Application $app) {
             $repository = new EloquentMenulink(new Menulink);

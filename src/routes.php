@@ -19,9 +19,6 @@ Route::group(
     }
 );
 
-Route::group(array('prefix'=>'api'), function() {
-    Route::resource(
-        'menulinks',
-        'TypiCMS\Modules\Menulinks\Controllers\ApiController'
-    );
+Route::group(['prefix'=>'api'], function() {
+    Route::resource('menulinks', 'ApiController');
 });

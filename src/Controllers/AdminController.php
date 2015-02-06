@@ -38,17 +38,14 @@ class AdminController extends AdminNestedController
      */
     public function create(Model $parent = null)
     {
-        $model = $this->repository->getModel();
         $this->title['child'] = trans('menulinks::global.New');
-
+        $model = $this->repository->getModel();
+        $menu = $parent;
         $selectPages = $this->repository->getPagesForSelect();
         $selectModules = $this->repository->getModulesForSelect();
 
         return view('menulinks::admin.create')
-            ->withMenu($parent)
-            ->with('selectPages', $selectPages)
-            ->with('selectModules', $selectModules)
-            ->withModel($model);
+            ->with(compact('model', 'menu', 'selectPages', 'selectModules'));
     }
 
     /**
@@ -61,12 +58,12 @@ class AdminController extends AdminNestedController
     public function edit(Model $parent = null, Model $model)
     {
         $this->title['child'] = trans('menulinks::global.Edit');
+        $menu = $parent;
+        $selectPages = $this->repository->getPagesForSelect();
+        $selectModules = $this->repository->getModulesForSelect();
 
         return view('menulinks::admin.edit')
-            ->withMenu($parent)
-            ->with('selectPages', $this->repository->getPagesForSelect())
-            ->with('selectModules', $this->repository->getModulesForSelect())
-            ->withModel($model);
+            ->with(compact('model', 'menu', 'selectPages', 'selectModules'));
     }
 
     /**

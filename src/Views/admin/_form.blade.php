@@ -39,12 +39,12 @@
                         <span class="input-group-addon">/</span>
                         {{ Form::text($lang.'[uri]', $model->translate($lang)->uri, array('class' => 'form-control')) }}
                     </div>
-                    {{ $errors->first($lang.'.uri', '<p class="help-block">:message</p>') }}
+                    {!! $errors->first($lang.'.uri', '<p class="help-block">:message</p>') !!}
                 </div>
                 <div class="form-group @if($errors->has($lang.'.url'))has-error @endif">
                     {{ Form::label($lang.'[url]', trans('validation.attributes.website')) }}
                     {{ Form::text($lang.'[url]', $model->translate($lang)->url, array('class' => 'form-control', 'placeholder' => 'http://')) }}
-                    {{ $errors->first($lang.'.url', '<p class="help-block">:message</p>') }}
+                    {!! $errors->first($lang.'.url', '<p class="help-block">:message</p>') !!}
                 </div>
                 {!! BootForm::checkbox(trans('labels.online'), $lang.'[status]') !!}
             </div>

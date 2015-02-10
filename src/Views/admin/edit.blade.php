@@ -9,8 +9,10 @@
         {{ $model->present()->title }}
     </h1>
 
-    {{ Form::model( $model, array( 'route' => array('admin.menus.menulinks.update', $menu->id, $model->id), 'files' => true, 'method' => 'put', 'role' => 'form' ) ) }}
+    {!! BootForm::open()->put()->action(route('admin.menus.menulinks.update', [$menu->id, $model->id]))->multipart()->role('form') !!}
+    {!! BootForm::bind($model) !!}
+    {!! BootForm::token() !!}
         @include('menulinks::admin._form')
-    {{ Form::close() }}
+    {!! BootForm::close() !!}
 
 @stop

@@ -22,10 +22,10 @@ class AdminController extends AdminNestedController
     /**
      * Redirect to menu edit form
      * 
-     * @param  Model $parent
+     * @param  $parent
      * @return Redirect
      */
-    public function index(Model $parent = null)
+    public function index($parent = null)
     {
         return Redirect::route('admin.menus.edit', $parent->id);
     }
@@ -33,10 +33,10 @@ class AdminController extends AdminNestedController
     /**
      * Show the form for creating a new resource.
      *
-     * @param  Model $parent
+     * @param  $parent
      * @return void
      */
-    public function create(Model $parent = null)
+    public function create($parent = null)
     {
         $this->title['child'] = trans('menulinks::global.New');
         $model = $this->repository->getModel();
@@ -51,11 +51,11 @@ class AdminController extends AdminNestedController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Model $parent
-     * @param  Model $model
+     * @param  $parent
+     * @param  $model
      * @return void
      */
-    public function edit(Model $parent = null, Model $model)
+    public function edit($parent = null, $model)
     {
         $this->title['child'] = trans('menulinks::global.Edit');
         $menu = $parent;
@@ -69,11 +69,11 @@ class AdminController extends AdminNestedController
     /**
      * Show resource.
      *
-     * @param  Model $parent
-     * @param  Model $model
+     * @param  $parent
+     * @param  $model
      * @return Redirect
      */
-    public function show(Model $parent = null, Model $model)
+    public function show($parent = null, $model)
     {
         return Redirect::route('admin.menus.menulinks.edit', [$parent->id, $model->id]);
     }
@@ -81,10 +81,10 @@ class AdminController extends AdminNestedController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Model $parent
+     * @param  $parent
      * @return Redirect
      */
-    public function store(Model $parent = null)
+    public function store($parent = null)
     {
         if ($model = $this->form->save(Input::all())) {
             $redirectUrl = Input::get('exit') ? $parent->editUrl() : $model->editUrl() ;
@@ -100,11 +100,11 @@ class AdminController extends AdminNestedController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Model $parent
-     * @param  Model $model
+     * @param  $parent
+     * @param  $model
      * @return Redirect
      */
-    public function update(Model $parent = null, Model $model)
+    public function update($parent = null, $model)
     {
 
         if ($this->form->update(Input::all())) {

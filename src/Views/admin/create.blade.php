@@ -9,8 +9,9 @@
         @lang('menulinks::global.New')
     </h1>
 
-    {{ Form::open( array( 'route' => array('admin.menus.menulinks.index', $menu->id), 'files' => true, 'method' => 'post', 'role' => 'form' ) ) }}
+    {!! BootForm::open()->action(route('admin.menus.menulinks.index', $menu->id))->multipart()->role('form') !!}
+    {!! BootForm::token() !!}
         @include('menulinks::admin._form')
-    {{ Form::close() }}
+    {!! BootForm::close() !!}
 
 @stop

@@ -1,9 +1,9 @@
 <?php
-namespace TypiCMS\Modules\Menulinks\Controllers;
+namespace TypiCMS\Modules\Menulinks\Http\Controllers;
 
 use Input;
 use Response;
-use TypiCMS\Controllers\BaseApiController;
+use TypiCMS\Http\Controllers\BaseApiController;
 use TypiCMS\Modules\Menulinks\Repositories\MenulinkInterface as Repository;
 
 class ApiController extends BaseApiController

@@ -1,5 +1,5 @@
 <?php
-namespace TypiCMS\Modules\Menulinks\Controllers;
+namespace TypiCMS\Modules\Menulinks\Http\Controllers;
 
 use Lang;
 use View;
@@ -8,7 +8,7 @@ use Input;
 use Redirect;
 use TypiCMS\Modules\Menulinks\Repositories\MenulinkInterface;
 use TypiCMS\Modules\Menulinks\Services\Form\MenulinkForm;
-use TypiCMS\Controllers\AdminNestedController;
+use TypiCMS\Http\Controllers\AdminNestedController;
 
 class AdminController extends AdminNestedController
 {

@@ -6,16 +6,16 @@ use View;
 use Illuminate\Database\Eloquent\Model;
 use Input;
 use Redirect;
+use TypiCMS\Modules\Menulinks\Http\Requests\FormRequest;
 use TypiCMS\Modules\Menulinks\Repositories\MenulinkInterface;
-use TypiCMS\Modules\Menulinks\Services\Form\MenulinkForm;
 use TypiCMS\Http\Controllers\AdminNestedController;
 
 class AdminController extends AdminNestedController
 {
 
-    public function __construct(MenulinkInterface $menulink, MenulinkForm $menulinkform)
+    public function __construct(MenulinkInterface $menulink)
     {
-        parent::__construct($menulink, $menulinkform);
+        parent::__construct($menulink);
         $this->title['parent'] = Lang::choice('menulinks::global.menulinks', 2);
     }
 

@@ -8,8 +8,6 @@ use Lang;
 use TypiCMS\Modules\Menulinks\Models\Menulink;
 use TypiCMS\Modules\Menulinks\Repositories\CacheDecorator;
 use TypiCMS\Modules\Menulinks\Repositories\EloquentMenulink;
-use TypiCMS\Modules\Menulinks\Services\Form\MenulinkForm;
-use TypiCMS\Modules\Menulinks\Services\Form\MenulinkFormLaravelValidator;
 use TypiCMS\Services\Cache\LaravelCache;
 use View;
 
@@ -49,11 +47,5 @@ class ModuleProvider extends ServiceProvider
             return new CacheDecorator($repository, $laravelCache);
         });
 
-        $app->bind('TypiCMS\Modules\Menulinks\Services\Form\MenulinkForm', function (Application $app) {
-            return new MenulinkForm(
-                new MenulinkFormLaravelValidator($app['validator']),
-                $app->make('TypiCMS\Modules\Menulinks\Repositories\MenulinkInterface')
-            );
-        });
     }
 }

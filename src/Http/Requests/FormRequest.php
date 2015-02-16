@@ -8,12 +8,36 @@ class FormRequest extends AbstractFormRequest {
     public function rules()
     {
         $rules = [
-            'menu_id'  => 'required',
+            'menu_id'    => 'required',
+            'class'      => 'max:255',
+            'icon_class' => 'max:255',
         ];
         foreach (config('translatable.locales') as $locale) {
-            $rules[$locale . '.url'] = 'url';
-            $rules[$locale . '.uri'] = 'regex:/^[\pL\pM\pN\/_-]+$/'; // AlphaDash + '/'
+            $rules[$locale . '.title'] = 'max:255';
+            $rules[$locale . '.url'] = 'max:255|url';
+            $rules[$locale . '.uri'] = 'max:255|regex:/^[\pL\pM\pN\/_-]+$/'; // AlphaDash + '/'
         }
         return $rules;
+    }
+
+    /**
+     * Sanitize inputs
+     * 
+     * @return array
+     */
+    public function sanitize()
+    {
+        $input = $this->all();
+
+        $input['parent_id'] = $this->get('parent_id') ? : null ;
+        $input['has_categories'] = $this->get('has_categories', 0);
+
+        // Checkboxes
+        foreach (config('translatable.locales') as $locale) {
+            $input[$locale]['status'] = $this->has($locale . '.status');
+        }
+
+        $this->replace($input);
+        return $this->all();
     }
 }

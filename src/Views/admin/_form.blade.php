@@ -17,11 +17,8 @@
 <div class="row">
 
     {!! BootForm::hidden('id') !!}
-
-    {!! BootForm::hidden('menu_id', $menu->id) !!}
-
-    {!! BootForm::hidden('position', $model->position ?: 0) !!}
-
+    {!! BootForm::hidden('menu_id')->value($menu->id) !!}
+    {!! BootForm::hidden('position')->value(0) !!}
     {!! BootForm::hidden('parent_id') !!}
 
     <div class="col-sm-6">
@@ -58,19 +55,12 @@
     </div>
 
     <div class="col-sm-6">
-
         {!! BootForm::select(trans('validation.attributes.page_id'), 'page_id', $selectPages) !!}
-
         {!! BootForm::select(trans('validation.attributes.module_name'), 'module_name', $selectModules) !!}
-
         {!! BootForm::checkbox(trans('validation.attributes.has_categories'), 'has_categories') !!}
-
         {!! BootForm::select(trans('validation.attributes.target'), 'target', ['' => trans('validation.values.Active tab'), '_blank' => trans('validation.values.New tab')]) !!}
-
         {!! BootForm::text(trans('validation.attributes.class'), 'class') !!}
-
         {!! BootForm::text(trans('validation.attributes.icon_class'), 'icon_class') !!}
-
     </div>
 
 </div>

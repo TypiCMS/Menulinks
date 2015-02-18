@@ -29,10 +29,9 @@ class FormRequest extends AbstractFormRequest {
     {
         $input = $this->all();
 
+        // Checkboxes
         $input['parent_id'] = $this->get('parent_id') ? : null ;
         $input['has_categories'] = $this->get('has_categories', 0);
-
-        // Checkboxes
         foreach (config('translatable.locales') as $locale) {
             $input[$locale]['status'] = $this->has($locale . '.status');
         }

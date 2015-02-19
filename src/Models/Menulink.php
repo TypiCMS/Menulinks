@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use InvalidArgumentException;
 use Log;
 use TypiCMS\Models\Base;
-use TypiCMS\NestableCollection;
+use TypiCMS\NestableTrait;
 use TypiCMS\Presenters\PresentableTrait;
 use TypiCMS\Traits\Historable;
 
@@ -16,6 +16,7 @@ class Menulink extends Base
     use Historable;
     use Translatable;
     use PresentableTrait;
+    use NestableTrait;
 
     protected $presenter = 'TypiCMS\Modules\Menulinks\Presenters\ModulePresenter';
 
@@ -82,16 +83,6 @@ class Menulink extends Base
     public function parent()
     {
         return $this->belongsTo('TypiCMS\Modules\Menulinks\Models\Menulink', 'parent_id');
-    }
-
-    /**
-     * Menulinks are nestable
-     *
-     * @return NestableCollection object
-     */
-    public function newCollection(array $models = array())
-    {
-        return new NestableCollection($models, 'parent_id');
     }
 
     /**

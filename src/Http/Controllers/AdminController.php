@@ -2,20 +2,23 @@
 namespace TypiCMS\Modules\Menulinks\Http\Controllers;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Routing\Controller;
 use Input;
 use Lang;
 use Redirect;
+use Response;
 use TypiCMS\Http\Controllers\AdminNestedController;
 use TypiCMS\Modules\Menulinks\Http\Requests\FormRequest;
 use TypiCMS\Modules\Menulinks\Repositories\MenulinkInterface;
 use View;
 
-class AdminController extends AdminNestedController
+class AdminController extends Controller
 {
+    protected $repository;
 
     public function __construct(MenulinkInterface $menulink)
     {
-        parent::__construct($menulink);
+        $this->repository = $menulink;
     }
 
     /**
@@ -98,5 +101,46 @@ class AdminController extends AdminNestedController
     {
         $this->repository->update($request->all());
         return $this->redirect($request, $model);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  $parent
+     * @param  $model
+     * @return Redirect
+     */
+    public function destroy($parent = null, $model)
+    {
+        if ($this->repository->delete($model)) {
+            return back();
+        }
+    }
+
+    /**
+     * Sort list.
+     *
+     * @return Response
+     */
+    public function sort()
+    {
+        $this->repository->sort(Input::all());
+        return Response::json([
+            'error'   => false,
+            'message' => trans('global.Items sorted')
+        ], 200);
+    }
+
+    /**
+     * Redirect after a form is saved
+     * 
+     * @param  $request
+     * @param  $model
+     * @return \Illuminate\Routing\Redirector
+     */
+    protected function redirect($request, $model)
+    {
+        $redirectUrl = $request->get('exit') ? $model->indexUrl() : $model->editUrl() ;
+        return redirect($redirectUrl);
     }
 }

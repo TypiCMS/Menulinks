@@ -2,8 +2,10 @@
 namespace TypiCMS\Modules\Menulinks\Repositories;
 
 use DB;
+use Exception;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Log;
 use TypiCMS\Repositories\RepositoriesAbstract;
 
 class EloquentMenulink extends RepositoriesAbstract implements MenulinkInterface
@@ -59,18 +61,23 @@ class EloquentMenulink extends RepositoriesAbstract implements MenulinkInterface
      */
     public function getForRoutes()
     {
-        $menulinks = DB::table('menulinks')
-            ->select('menulinks.id', 'menulinks.parent_id', 'uri', 'locale', 'module_name')
-            ->join('menulink_translations', 'menulinks.id', '=', 'menulink_translations.menulink_id')
-            ->where('uri', '!=', '')
-            ->where('module_name', '!=', '')
-            ->where('status', '=', 1)
-            ->orderBy('module_name')
-            ->get();
+        $menulinksArray = [];
 
-        $menulinksArray = array();
-        foreach ($menulinks as $menulink) {
-            $menulinksArray[$menulink->module_name][$menulink->locale] = $menulink->uri;
+        try {
+            $menulinks = DB::table('menulinks')
+                ->select('menulinks.id', 'menulinks.parent_id', 'uri', 'locale', 'module_name')
+                ->join('menulink_translations', 'menulinks.id', '=', 'menulink_translations.menulink_id')
+                ->where('uri', '!=', '')
+                ->where('module_name', '!=', '')
+                ->where('status', '=', 1)
+                ->orderBy('module_name')
+                ->get();
+
+            foreach ($menulinks as $menulink) {
+                $menulinksArray[$menulink->module_name][$menulink->locale] = $menulink->uri;
+            }
+        } catch (Exception $e) {
+            Log::error($e->getMessage());
         }
 
         return $menulinksArray;

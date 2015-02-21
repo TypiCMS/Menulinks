@@ -16,9 +16,12 @@ class ModuleProvider extends ServiceProvider
 
     public function boot()
     {
-        // Add dirs
-        View::addNamespace('menulinks', __DIR__ . '/../views/');
-        $this->loadTranslationsFrom(__DIR__ . '/../lang', 'menulinks');
+
+        $this->loadViewsFrom(__DIR__ . '/../resources/views/', 'menulinks');
+        $this->publishes([
+            __DIR__ . '/../views' => base_path('resources/views/vendor/menulinks'),
+        ], 'views');
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'menulinks');
         $this->mergeConfigFrom(
             __DIR__ . '/../config/config.php', 'typicms.menulinks'
         );

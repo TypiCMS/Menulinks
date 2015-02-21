@@ -16,7 +16,6 @@ class AdminController extends AdminNestedController
     public function __construct(MenulinkInterface $menulink)
     {
         parent::__construct($menulink);
-        $this->title['parent'] = Lang::choice('menulinks::global.menulinks', 2);
     }
 
     /**
@@ -38,7 +37,6 @@ class AdminController extends AdminNestedController
      */
     public function create($menu = null)
     {
-        $this->title['child'] = trans('menulinks::global.New');
         $model = $this->repository->getModel();
         $selectPages = $this->repository->getPagesForSelect();
         $selectModules = $this->repository->getModulesForSelect();
@@ -56,7 +54,6 @@ class AdminController extends AdminNestedController
      */
     public function edit($menu = null, $model)
     {
-        $this->title['child'] = trans('menulinks::global.Edit');
         $selectPages = $this->repository->getPagesForSelect();
         $selectModules = $this->repository->getModulesForSelect();
 

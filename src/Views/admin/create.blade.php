@@ -1,5 +1,7 @@
 @extends('core::admin.master')
 
+@section('title', trans('menulinks::global.New'))
+
 @section('main')
 
     <h1>

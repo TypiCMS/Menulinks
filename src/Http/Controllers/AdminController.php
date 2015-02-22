@@ -7,29 +7,17 @@ use Input;
 use Lang;
 use Redirect;
 use Response;
-use TypiCMS\Http\Controllers\AdminNestedController;
+use TypiCMS\Http\Controllers\BaseAdminController;
 use TypiCMS\Modules\Menulinks\Http\Requests\FormRequest;
 use TypiCMS\Modules\Menulinks\Repositories\MenulinkInterface;
 use View;
 
-class AdminController extends Controller
+class AdminController extends BaseAdminController
 {
-    protected $repository;
 
     public function __construct(MenulinkInterface $menulink)
     {
-        $this->repository = $menulink;
-    }
-
-    /**
-     * Redirect to menu edit form
-     * 
-     * @param  $menu
-     * @return Redirect
-     */
-    public function index($menu = null)
-    {
-        return Redirect::route('admin.menus.edit', $menu->id);
+        parent::__construct($menulink);
     }
 
     /**
@@ -55,7 +43,7 @@ class AdminController extends Controller
      * @param  $model
      * @return void
      */
-    public function edit($menu = null, $model)
+    public function edit($menu = null, $model = null)
     {
         $selectPages = $this->repository->getPagesForSelect();
         $selectModules = $this->repository->getModulesForSelect();
@@ -71,7 +59,7 @@ class AdminController extends Controller
      * @param  $model
      * @return Redirect
      */
-    public function show($menu = null, $model)
+    public function show($menu = null, $model = null)
     {
         return Redirect::route('admin.menus.menulinks.edit', [$menu->id, $model->id]);
     }
@@ -110,7 +98,7 @@ class AdminController extends Controller
      * @param  $model
      * @return Redirect
      */
-    public function destroy($parent = null, $model)
+    public function destroy($parent = null, $model = null)
     {
         if ($this->repository->delete($model)) {
             return back();
@@ -129,18 +117,5 @@ class AdminController extends Controller
             'error'   => false,
             'message' => trans('global.Items sorted')
         ], 200);
-    }
-
-    /**
-     * Redirect after a form is saved
-     * 
-     * @param  $request
-     * @param  $model
-     * @return \Illuminate\Routing\Redirector
-     */
-    protected function redirect($request, $model)
-    {
-        $redirectUrl = $request->get('exit') ? $model->indexUrl() : $model->editUrl() ;
-        return redirect($redirectUrl);
     }
 }

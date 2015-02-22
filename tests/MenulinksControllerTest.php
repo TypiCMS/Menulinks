@@ -3,10 +3,6 @@ use TypiCMS\Modules\Menulinks\Models\Menulink;
 
 class MenulinksControllerTest extends TestCase
 {
-    public function tearDown()
-    {
-        Mockery::close();
-    }
 
     public function testStoreFails()
     {

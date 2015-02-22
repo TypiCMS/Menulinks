@@ -58,7 +58,7 @@
         {!! BootForm::select(trans('validation.attributes.page_id'), 'page_id', $selectPages) !!}
         {!! BootForm::select(trans('validation.attributes.module_name'), 'module_name', $selectModules) !!}
         {!! BootForm::checkbox(trans('validation.attributes.has_categories'), 'has_categories') !!}
-        {!! BootForm::select(trans('validation.attributes.target'), 'target', ['' => trans('validation.values.Active tab'), '_blank' => trans('validation.values.New tab')]) !!}
+        {!! BootForm::select(trans('validation.attributes.target'), 'target', ['' => trans('menulinks::global.Active tab'), '_blank' => trans('menulinks::global.New tab')]) !!}
         {!! BootForm::text(trans('validation.attributes.class'), 'class') !!}
         {!! BootForm::text(trans('validation.attributes.icon_class'), 'icon_class') !!}
     </div>

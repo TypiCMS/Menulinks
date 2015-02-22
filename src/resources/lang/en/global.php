@@ -5,4 +5,6 @@ return array(
     'New'  => 'New menu link',
     'Edit' => 'Edit menu link',
     'Back' => 'Back to menu links',
+    'Active tab' => 'Active tab',
+    'New tab' => 'New tab',
 );

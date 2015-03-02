@@ -21,7 +21,6 @@ class CreateMenulinksTables extends Migration
             $table->integer('parent_id')->unsigned()->nullable()->default(null);
             $table->integer('position')->unsigned()->default(0);
             $table->string('target', 10)->nullable();
-            $table->string('module_name', 50)->nullable();
             $table->string('class')->nullable();
             $table->string('icon_class')->nullable();
             $table->boolean('has_categories')->nullable();
@@ -43,7 +42,6 @@ class CreateMenulinksTables extends Migration
 
             $table->string('title', 100);
             $table->string('url');
-            $table->string('uri');
 
             $table->timestamps();
 

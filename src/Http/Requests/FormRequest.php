@@ -14,8 +14,7 @@ class FormRequest extends AbstractFormRequest {
         ];
         foreach (config('translatable.locales') as $locale) {
             $rules[$locale . '.title'] = 'max:255';
-            $rules[$locale . '.url'] = 'max:255|url';
-            $rules[$locale . '.uri'] = 'max:255|regex:/^[\pL\pM\pN\/_-]+$/'; // AlphaDash + '/'
+            $rules[$locale . '.url']   = 'max:255|url';
         }
         return $rules;
     }

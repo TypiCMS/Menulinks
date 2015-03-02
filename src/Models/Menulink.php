@@ -26,7 +26,6 @@ class Menulink extends Base
         'parent_id',
         'position',
         'target',
-        'module_name',
         'restricted_to',
         'class',
         'icon_class',
@@ -34,7 +33,6 @@ class Menulink extends Base
         'has_categories',
         // Translatable columns
         'title',
-        'uri',
         'url',
         'status',
     );
@@ -46,7 +44,6 @@ class Menulink extends Base
      */
     public $translatedAttributes = array(
         'title',
-        'uri',
         'url',
         'status',
     );

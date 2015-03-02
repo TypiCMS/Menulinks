@@ -15,11 +15,4 @@ interface MenulinkInterface extends RepositoryInterface
      * @return Collection
      */
     public function getAllFromMenu($id = null, $all = false);
-
-    /**
-     * Get Items to build routes
-     *
-     * @return Array
-     */
-    public function getForRoutes();
 }

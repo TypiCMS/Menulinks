@@ -37,25 +37,4 @@ class CacheDecorator extends CacheAbstractDecorator implements MenulinkInterface
 
         return $models;
     }
-
-    /**
-     * Get Items to build routes
-     *
-     * @return Array
-     */
-    public function getForRoutes()
-    {
-        $cacheKey = md5(App::getLocale().'menulinksForRoutes');
-
-        if ($this->cache->has($cacheKey)) {
-            return $this->cache->get($cacheKey);
-        }
-
-        $models = $this->repo->getForRoutes();
-
-        // Store in cache for next request
-        $this->cache->put($cacheKey, $models);
-
-        return $models;
-    }
 }

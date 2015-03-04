@@ -32,18 +32,7 @@
             <div class="tab-pane fade @if ($locale == $lang)in active @endif" id="{{ $lang }}">
 
                 {!! BootForm::text(trans('validation.attributes.title'), $lang.'[title]') !!}
-
-                <div class="form-group @if($errors->has($lang.'.uri'))has-error @endif">
-                    {!! Form::label(trans('validation.attributes.uri'))->addClass('control-label')->forId($lang . '[uri]') !!}
-                    <div class="input-group">
-                        <span class="input-group-addon">/</span>
-                        {!! Form::text($lang . '[uri]')->addClass('form-control')->id($lang . '[uri]') !!}
-                    </div>
-                    {!! $errors->first($lang.'.uri', '<p class="help-block">:message</p>') !!}
-                </div>
-
                 {!! BootForm::text(trans('validation.attributes.url'), $lang.'[url]') !!}
-
                 {!! BootForm::checkbox(trans('validation.attributes.online'), $lang.'[status]') !!}
 
             </div>
@@ -56,7 +45,6 @@
 
     <div class="col-sm-6">
         {!! BootForm::select(trans('validation.attributes.page_id'), 'page_id', $selectPages) !!}
-        {!! BootForm::select(trans('validation.attributes.module_name'), 'module_name', $selectModules) !!}
         {!! BootForm::checkbox(trans('validation.attributes.has_categories'), 'has_categories') !!}
         {!! BootForm::select(trans('validation.attributes.target'), 'target', ['' => trans('menulinks::global.Active tab'), '_blank' => trans('menulinks::global.New tab')]) !!}
         {!! BootForm::text(trans('validation.attributes.class'), 'class') !!}

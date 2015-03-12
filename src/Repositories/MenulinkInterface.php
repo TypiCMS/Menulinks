@@ -14,5 +14,5 @@ interface MenulinkInterface extends RepositoryInterface
      * @param  boolean  $all published or all
      * @return Collection
      */
-    public function getAllFromMenu($id = null, $all = false);
+    public function allFromMenu($id = null, $all = false);
 }

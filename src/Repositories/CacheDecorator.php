@@ -22,7 +22,7 @@ class CacheDecorator extends CacheAbstractDecorator implements MenulinkInterface
      * @param  boolean  $all published or all
      * @return Collection
      */
-    public function getAllFromMenu($id = null, $all = false)
+    public function allFromMenu($id = null, $all = false)
     {
         $cacheKey = md5(App::getLocale().'all'.$all.$id);
 
@@ -30,7 +30,7 @@ class CacheDecorator extends CacheAbstractDecorator implements MenulinkInterface
             return $this->cache->get($cacheKey);
         }
 
-        $models = $this->repo->getAllFromMenu($id, $all);
+        $models = $this->repo->allFromMenu($id, $all);
 
         // Store in cache for next request
         $this->cache->put($cacheKey, $models);

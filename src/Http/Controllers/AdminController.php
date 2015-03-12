@@ -73,7 +73,9 @@ class AdminController extends BaseAdminController
      */
     public function store($menu = null, FormRequest $request)
     {
-        $model = $this->repository->create($request->all());
+        $data = $request->all();
+        $data['parent_id'] = null;
+        $model = $this->repository->create($data);
         return $this->redirect($request, $model);
     }
 
@@ -87,7 +89,9 @@ class AdminController extends BaseAdminController
      */
     public function update($menu = null, $model, FormRequest $request)
     {
-        $this->repository->update($request->all());
+        $data = $request->all();
+        $data['parent_id'] = $data['parent_id'] ? : null ;
+        $this->repository->update($data);
         return $this->redirect($request, $model);
     }
 

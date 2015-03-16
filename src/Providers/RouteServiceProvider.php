@@ -41,7 +41,7 @@ class RouteServiceProvider extends ServiceProvider {
             /**
              * Admin routes
              */
-            $router->resource('admin/menus.menulinks', 'AdminController', ['except' => 'index']);
+            $router->resource('admin/menus.menulinks', 'AdminController');
             $router->post(
                 'admin/menulinks/sort',
                 ['as' => 'admin.menulinks.sort', 'uses' => 'AdminController@sort']

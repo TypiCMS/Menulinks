@@ -9,6 +9,7 @@ class FormRequest extends AbstractFormRequest {
     {
         $rules = [
             'menu_id'    => 'required',
+            'page_id'    => 'required_if:has_categories,1',
             'class'      => 'max:255',
             'icon_class' => 'max:255',
         ];

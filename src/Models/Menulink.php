@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Builder;
 use InvalidArgumentException;
 use Log;
 use TypiCMS\Models\Base;
+use TypiCMS\Modules\History\Traits\Historable;
 use TypiCMS\NestableTrait;
 use TypiCMS\Presenters\PresentableTrait;
-use TypiCMS\Traits\Historable;
 
 class Menulink extends Base
 {

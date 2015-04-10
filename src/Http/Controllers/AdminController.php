@@ -75,6 +75,7 @@ class AdminController extends BaseAdminController
     {
         $data = $request->all();
         $data['parent_id'] = null;
+        $data['page_id'] = $data['page_id'] ? : null ;
         $model = $this->repository->create($data);
         return $this->redirect($request, $model);
     }
@@ -91,6 +92,7 @@ class AdminController extends BaseAdminController
     {
         $data = $request->all();
         $data['parent_id'] = $data['parent_id'] ? : null ;
+        $data['page_id'] = $data['page_id'] ? : null ;
         $this->repository->update($data);
         return $this->redirect($request, $model);
     }

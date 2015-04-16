@@ -41,7 +41,7 @@ class CreateMenulinksTables extends Migration
             $table->boolean('status')->default(0);
 
             $table->string('title', 100);
-            $table->string('url');
+            $table->string('url')->nullable();
 
             $table->timestamps();
 

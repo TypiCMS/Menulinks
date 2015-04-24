@@ -30,10 +30,9 @@ class AdminController extends BaseAdminController
     {
         $model = $this->repository->getModel();
         $selectPages = $this->repository->getPagesForSelect();
-        $selectModules = $this->repository->getModulesForSelect();
 
         return view('menulinks::admin.create')
-            ->with(compact('model', 'menu', 'selectPages', 'selectModules'));
+            ->with(compact('model', 'menu', 'selectPages'));
     }
 
     /**
@@ -46,10 +45,9 @@ class AdminController extends BaseAdminController
     public function edit($menu = null, $model = null)
     {
         $selectPages = $this->repository->getPagesForSelect();
-        $selectModules = $this->repository->getModulesForSelect();
 
         return view('menulinks::admin.edit')
-            ->with(compact('model', 'menu', 'selectPages', 'selectModules'));
+            ->with(compact('model', 'menu', 'selectPages'));
     }
 
     /**

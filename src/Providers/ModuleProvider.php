@@ -1,15 +1,12 @@
 <?php
 namespace TypiCMS\Modules\Menulinks\Providers;
 
-use Config;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
-use Lang;
 use TypiCMS\Modules\Menulinks\Models\Menulink;
 use TypiCMS\Modules\Menulinks\Repositories\CacheDecorator;
 use TypiCMS\Modules\Menulinks\Repositories\EloquentMenulink;
 use TypiCMS\Modules\Core\Services\Cache\LaravelCache;
-use View;
 
 class ModuleProvider extends ServiceProvider
 {

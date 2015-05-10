@@ -1,7 +1,6 @@
 <?php
 namespace TypiCMS\Modules\Menulinks\Repositories;
 
-use App;
 use Illuminate\Database\Eloquent\Collection;
 use TypiCMS\Modules\Core\Repositories\CacheAbstractDecorator;
 use TypiCMS\Modules\Core\Services\Cache\CacheInterface;
@@ -24,7 +23,7 @@ class CacheDecorator extends CacheAbstractDecorator implements MenulinkInterface
      */
     public function allFromMenu($id = null, $all = false)
     {
-        $cacheKey = md5(App::getLocale().'all'.$all.$id);
+        $cacheKey = md5(config('app.locale').'all'.$all.$id);
 
         if ($this->cache->has($cacheKey)) {
             return $this->cache->get($cacheKey);

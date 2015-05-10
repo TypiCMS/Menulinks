@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use InvalidArgumentException;
 use Laracasts\Presenter\PresentableTrait;
 use Log;
-use TypiCMS\Models\Base;
+use TypiCMS\Modules\Core\Models\Base;
 use TypiCMS\Modules\History\Traits\Historable;
 use TypiCMS\NestableTrait;
 

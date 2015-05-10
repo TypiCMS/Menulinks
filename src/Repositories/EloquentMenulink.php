@@ -6,7 +6,7 @@ use Exception;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Log;
-use TypiCMS\Repositories\RepositoriesAbstract;
+use TypiCMS\Modules\Core\Repositories\RepositoriesAbstract;
 
 class EloquentMenulink extends RepositoriesAbstract implements MenulinkInterface
 {
@@ -41,7 +41,7 @@ class EloquentMenulink extends RepositoriesAbstract implements MenulinkInterface
 
     /**
      * Get sort data
-     * 
+     *
      * @param  integer $position
      * @param  array   $item
      * @return array

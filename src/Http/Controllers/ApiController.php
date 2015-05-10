@@ -3,7 +3,7 @@ namespace TypiCMS\Modules\Menulinks\Http\Controllers;
 
 use Input;
 use Response;
-use TypiCMS\Http\Controllers\BaseApiController;
+use TypiCMS\Modules\Core\Http\Controllers\BaseApiController;
 use TypiCMS\Modules\Menulinks\Repositories\MenulinkInterface as Repository;
 
 class ApiController extends BaseApiController

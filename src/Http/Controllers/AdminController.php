@@ -7,7 +7,7 @@ use Input;
 use Lang;
 use Redirect;
 use Response;
-use TypiCMS\Http\Controllers\BaseAdminController;
+use TypiCMS\Modules\Core\Http\Controllers\BaseAdminController;
 use TypiCMS\Modules\Menulinks\Http\Requests\FormRequest;
 use TypiCMS\Modules\Menulinks\Repositories\MenulinkInterface;
 use View;

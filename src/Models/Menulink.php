@@ -4,11 +4,11 @@ namespace TypiCMS\Modules\Menulinks\Models;
 use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Builder;
 use InvalidArgumentException;
+use Laracasts\Presenter\PresentableTrait;
 use Log;
 use TypiCMS\Models\Base;
 use TypiCMS\Modules\History\Traits\Historable;
 use TypiCMS\NestableTrait;
-use TypiCMS\Presenters\PresentableTrait;
 
 class Menulink extends Base
 {
@@ -84,7 +84,7 @@ class Menulink extends Base
 
     /**
      * Get edit url of model
-     * 
+     *
      * @return string|void
      */
     public function editUrl()
@@ -98,7 +98,7 @@ class Menulink extends Base
 
     /**
      * Get back office’s index of models url
-     * 
+     *
      * @return string|void
      */
     public function indexUrl()

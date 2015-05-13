@@ -1,8 +1,8 @@
 <?php
 namespace TypiCMS\Modules\Menulinks\Http\Controllers;
 
-use Input;
-use Response;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Response;
 use TypiCMS\Modules\Core\Http\Controllers\BaseApiController;
 use TypiCMS\Modules\Menulinks\Repositories\MenulinkInterface as Repository;
 

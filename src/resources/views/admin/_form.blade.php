@@ -18,7 +18,7 @@
 
     {!! BootForm::hidden('id') !!}
     {!! BootForm::hidden('menu_id')->value($menu->id) !!}
-    {!! BootForm::hidden('position')->value(0) !!}
+    {!! BootForm::hidden('position') !!}
     {!! BootForm::hidden('parent_id') !!}
 
     <div class="col-sm-6">

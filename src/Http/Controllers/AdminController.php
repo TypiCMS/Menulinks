@@ -5,7 +5,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Response;
 use TypiCMS\Modules\Core\Http\Controllers\BaseAdminController;
 use TypiCMS\Modules\Menulinks\Http\Requests\FormRequest;
 use TypiCMS\Modules\Menulinks\Repositories\MenulinkInterface;
@@ -111,12 +110,12 @@ class AdminController extends BaseAdminController
     /**
      * Sort list.
      *
-     * @return Response
+     * @return \Illuminate\Support\Facades\Response
      */
     public function sort()
     {
         $this->repository->sort(Input::all());
-        return Response::json([
+        return response()->json([
             'error'   => false,
             'message' => trans('global.Items sorted')
         ], 200);

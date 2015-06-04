@@ -2,7 +2,6 @@
 namespace TypiCMS\Modules\Menulinks\Http\Controllers;
 
 use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Response;
 use TypiCMS\Modules\Core\Http\Controllers\BaseApiController;
 use TypiCMS\Modules\Menulinks\Repositories\MenulinkInterface as Repository;
 
@@ -15,12 +14,12 @@ class ApiController extends BaseApiController
 
     /**
      * Get models
-     * @return Response
+     * @return \Illuminate\Support\Facades\Response
      */
     public function index()
     {
         $id = Input::get('menu_id');
         $models = $this->repository->allNestedBy('menu_id', $id, [], true);
-        return Response::json($models, 200);
+        return response()->json($models, 200);
     }
 }

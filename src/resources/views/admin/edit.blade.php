@@ -13,7 +13,6 @@
 
     {!! BootForm::open()->put()->action(route('admin.menus.menulinks.update', [$menu->id, $model->id]))->multipart()->role('form') !!}
     {!! BootForm::bind($model) !!}
-    {!! BootForm::token() !!}
         @include('menulinks::admin._form')
     {!! BootForm::close() !!}
 

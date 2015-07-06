@@ -12,7 +12,6 @@
     </h1>
 
     {!! BootForm::open()->action(route('admin.menus.menulinks.index', $menu->id))->multipart()->role('form') !!}
-    {!! BootForm::token() !!}
         @include('menulinks::admin._form')
     {!! BootForm::close() !!}
 

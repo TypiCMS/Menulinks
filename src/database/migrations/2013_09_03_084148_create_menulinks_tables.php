@@ -15,7 +15,7 @@ class CreateMenulinksTables extends Migration
         Schema::create('menulinks', function (Blueprint $table) {
             $table->engine = 'InnoDB';
 
-            $table->increments('id')->unsigned();
+            $table->increments('id');
             $table->integer('menu_id')->unsigned();
             $table->integer('page_id')->unsigned()->nullable();
             $table->integer('parent_id')->unsigned()->nullable()->default(null);
@@ -33,7 +33,7 @@ class CreateMenulinksTables extends Migration
         Schema::create('menulink_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
 
-            $table->increments('id')->unsigned();
+            $table->increments('id');
             $table->integer('menulink_id')->unsigned();
 
             $table->string('locale')->index();

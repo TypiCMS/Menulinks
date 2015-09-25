@@ -3,6 +3,7 @@ namespace TypiCMS\Modules\Menulinks\Http\Controllers;
 
 use Illuminate\Support\Facades\Input;
 use TypiCMS\Modules\Core\Http\Controllers\BaseApiController;
+use TypiCMS\Modules\Menulinks\Http\Requests\FormRequest;
 use TypiCMS\Modules\Menulinks\Repositories\MenulinkInterface as Repository;
 
 class ApiController extends BaseApiController
@@ -21,5 +22,36 @@ class ApiController extends BaseApiController
         $id = Input::get('menu_id');
         $models = $this->repository->allNestedBy('menu_id', $id, [], true);
         return response()->json($models, 200);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  FormRequest $request
+     * @return Model|false
+     */
+    public function store(FormRequest $request)
+    {
+        $model = $this->repository->create(Input::all());
+        $error = $model ? false : true ;
+        return response()->json([
+            'error' => $error,
+            'model' => $model,
+        ], 200);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  $model
+     * @param  FormRequest $request
+     * @return boolean
+     */
+    public function update($model, FormRequest $request)
+    {
+        $error = $this->repository->update($request->all()) ? false : true ;
+        return response()->json([
+            'error' => $error,
+        ], 200);
     }
 }

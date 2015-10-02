@@ -32,7 +32,7 @@
             <div class="tab-pane fade @if ($locale == $lang)in active @endif" id="{{ $lang }}">
 
                 {!! BootForm::text(trans('validation.attributes.title'), $lang.'[title]') !!}
-                {!! BootForm::text(trans('validation.attributes.url'), $lang.'[url]') !!}
+                {!! BootForm::text(trans('validation.attributes.url'), $lang.'[url]')->placeholder('http://') !!}
                 <input type="hidden" name="{{ $lang }}[status]" value="0">
                 {!! BootForm::checkbox(trans('validation.attributes.online'), $lang.'[status]') !!}
 

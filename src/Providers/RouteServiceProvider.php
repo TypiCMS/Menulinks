@@ -1,12 +1,12 @@
 <?php
+
 namespace TypiCMS\Modules\Menulinks\Providers;
 
-use Config;
-use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Routing\Router;
 
-class RouteServiceProvider extends ServiceProvider {
-
+class RouteServiceProvider extends ServiceProvider
+{
     /**
      * This namespace is applied to the controller routes in your routes file.
      *
@@ -19,7 +19,8 @@ class RouteServiceProvider extends ServiceProvider {
     /**
      * Define your route model bindings, pattern filters, etc.
      *
-     * @param  \Illuminate\Routing\Router  $router
+     * @param \Illuminate\Routing\Router $router
+     *
      * @return void
      */
     public function boot(Router $router)
@@ -32,13 +33,14 @@ class RouteServiceProvider extends ServiceProvider {
     /**
      * Define the routes for the application.
      *
-     * @param  \Illuminate\Routing\Router  $router
+     * @param \Illuminate\Routing\Router $router
+     *
      * @return void
      */
     public function map(Router $router)
     {
-        $router->group(['namespace' => $this->namespace], function(Router $router) {
-            /**
+        $router->group(['namespace' => $this->namespace], function (Router $router) {
+            /*
              * Admin routes
              */
             $router->resource('admin/menus.menulinks', 'AdminController');
@@ -47,11 +49,10 @@ class RouteServiceProvider extends ServiceProvider {
                 ['as' => 'admin.menulinks.sort', 'uses' => 'AdminController@sort']
             );
 
-            /**
+            /*
              * API routes
              */
             $router->resource('api/menulinks', 'ApiController');
         });
     }
-
 }

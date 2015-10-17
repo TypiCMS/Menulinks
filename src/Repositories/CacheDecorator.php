@@ -1,4 +1,5 @@
 <?php
+
 namespace TypiCMS\Modules\Menulinks\Repositories;
 
 use Illuminate\Database\Eloquent\Collection;
@@ -7,7 +8,6 @@ use TypiCMS\Modules\Core\Services\Cache\CacheInterface;
 
 class CacheDecorator extends CacheAbstractDecorator implements MenulinkInterface
 {
-
     public function __construct(MenulinkInterface $repo, CacheInterface $cache)
     {
         $this->repo = $repo;
@@ -15,10 +15,11 @@ class CacheDecorator extends CacheAbstractDecorator implements MenulinkInterface
     }
 
     /**
-     * Get a menu’s items and children
+     * Get a menu’s items and children.
      *
-     * @param  integer  $id
-     * @param  boolean  $all published or all
+     * @param int  $id
+     * @param bool $all published or all
+     *
      * @return Collection
      */
     public function allFromMenu($id = null, $all = false)

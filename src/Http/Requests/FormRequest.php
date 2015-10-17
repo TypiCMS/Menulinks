@@ -1,10 +1,11 @@
 <?php
+
 namespace TypiCMS\Modules\Menulinks\Http\Requests;
 
 use TypiCMS\Modules\Core\Http\Requests\AbstractFormRequest;
 
-class FormRequest extends AbstractFormRequest {
-
+class FormRequest extends AbstractFormRequest
+{
     public function rules()
     {
         $rules = [
@@ -14,9 +15,10 @@ class FormRequest extends AbstractFormRequest {
             'icon_class' => 'max:255',
         ];
         foreach (config('translatable.locales') as $locale) {
-            $rules[$locale . '.title'] = 'max:255';
-            $rules[$locale . '.url']   = 'url|max:255';
+            $rules[$locale.'.title'] = 'max:255';
+            $rules[$locale.'.url'] = 'url|max:255';
         }
+
         return $rules;
     }
 }

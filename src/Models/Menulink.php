@@ -1,8 +1,8 @@
 <?php
+
 namespace TypiCMS\Modules\Menulinks\Models;
 
 use Dimsav\Translatable\Translatable;
-use Illuminate\Database\Eloquent\Builder;
 use InvalidArgumentException;
 use Laracasts\Presenter\PresentableTrait;
 use Log;
@@ -12,7 +12,6 @@ use TypiCMS\NestableTrait;
 
 class Menulink extends Base
 {
-
     use Historable;
     use Translatable;
     use PresentableTrait;
@@ -20,7 +19,7 @@ class Menulink extends Base
 
     protected $presenter = 'TypiCMS\Modules\Menulinks\Presenters\ModulePresenter';
 
-    protected $fillable = array(
+    protected $fillable = [
         'menu_id',
         'page_id',
         'parent_id',
@@ -35,23 +34,23 @@ class Menulink extends Base
         'title',
         'url',
         'status',
-    );
+    ];
 
     /**
      * Translatable model configs.
      *
      * @var array
      */
-    public $translatedAttributes = array(
+    public $translatedAttributes = [
         'title',
         'url',
         'status',
-    );
+    ];
 
     protected $appends = ['status', 'title'];
 
     /**
-     * A menulink belongs to a menu
+     * A menulink belongs to a menu.
      */
     public function menu()
     {
@@ -59,7 +58,7 @@ class Menulink extends Base
     }
 
     /**
-     * A menulink can belongs to a page
+     * A menulink can belongs to a page.
      */
     public function page()
     {
@@ -67,7 +66,7 @@ class Menulink extends Base
     }
 
     /**
-     * A menulink can have children
+     * A menulink can have children.
      */
     public function children()
     {
@@ -75,7 +74,7 @@ class Menulink extends Base
     }
 
     /**
-     * A menulink can have a parent
+     * A menulink can have a parent.
      */
     public function parent()
     {
@@ -83,7 +82,7 @@ class Menulink extends Base
     }
 
     /**
-     * Get edit url of model
+     * Get edit url of model.
      *
      * @return string|void
      */
@@ -97,7 +96,7 @@ class Menulink extends Base
     }
 
     /**
-     * Get back office’s index of models url
+     * Get back office’s index of models url.
      *
      * @return string|void
      */

@@ -1,8 +1,8 @@
 <?php
+
 namespace TypiCMS\Modules\Menulinks\Http\Controllers;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use TypiCMS\Modules\Core\Http\Controllers\BaseAdminController;
@@ -11,7 +11,6 @@ use TypiCMS\Modules\Menulinks\Repositories\MenulinkInterface;
 
 class AdminController extends BaseAdminController
 {
-
     public function __construct(MenulinkInterface $menulink)
     {
         parent::__construct($menulink);
@@ -21,6 +20,7 @@ class AdminController extends BaseAdminController
      * Show the form for creating a new resource.
      *
      * @param  $menu
+     *
      * @return void
      */
     public function create($menu = null)
@@ -37,6 +37,7 @@ class AdminController extends BaseAdminController
      *
      * @param  $menu
      * @param  $model
+     *
      * @return void
      */
     public function edit($menu = null, $model = null)
@@ -52,6 +53,7 @@ class AdminController extends BaseAdminController
      *
      * @param  $menu
      * @param  $model
+     *
      * @return Redirect
      */
     public function show($menu = null, $model = null)
@@ -63,7 +65,8 @@ class AdminController extends BaseAdminController
      * Store a newly created resource in storage.
      *
      * @param  $menu
-     * @param  FormRequest $request
+     * @param FormRequest $request
+     *
      * @return Redirect
      */
     public function store($menu = null, FormRequest $request)
@@ -73,6 +76,7 @@ class AdminController extends BaseAdminController
         $data['page_id'] = $data['page_id'] ?: null;
         $data['position'] = $data['position'] ?: 0;
         $model = $this->repository->create($data);
+
         return $this->redirect($request, $model);
     }
 
@@ -81,7 +85,8 @@ class AdminController extends BaseAdminController
      *
      * @param  $menu
      * @param  $model
-     * @param  FormRequest $request
+     * @param FormRequest $request
+     *
      * @return Redirect
      */
     public function update($menu = null, $model, FormRequest $request)
@@ -90,6 +95,7 @@ class AdminController extends BaseAdminController
         $data['parent_id'] = $data['parent_id'] ?: null;
         $data['page_id'] = $data['page_id'] ?: null;
         $this->repository->update($data);
+
         return $this->redirect($request, $model);
     }
 
@@ -98,6 +104,7 @@ class AdminController extends BaseAdminController
      *
      * @param  $parent
      * @param  $model
+     *
      * @return Redirect
      */
     public function destroy($parent = null, $model = null)
@@ -115,9 +122,10 @@ class AdminController extends BaseAdminController
     public function sort()
     {
         $this->repository->sort(Input::all());
+
         return response()->json([
             'error'   => false,
-            'message' => trans('global.Items sorted')
+            'message' => trans('global.Items sorted'),
         ], 200);
     }
 }

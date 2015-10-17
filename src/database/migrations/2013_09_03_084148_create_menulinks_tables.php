@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateMenulinksTables extends Migration
 {
@@ -45,7 +45,7 @@ class CreateMenulinksTables extends Migration
 
             $table->timestamps();
 
-            $table->unique(array('menulink_id', 'locale'));
+            $table->unique(['menulink_id', 'locale']);
             $table->foreign('menulink_id')->references('id')->on('menulinks')->onDelete('cascade');
 
         });
@@ -61,5 +61,4 @@ class CreateMenulinksTables extends Migration
         Schema::drop('menulink_translations');
         Schema::drop('menulinks');
     }
-
 }

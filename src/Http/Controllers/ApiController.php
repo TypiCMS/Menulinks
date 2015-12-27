@@ -2,7 +2,7 @@
 
 namespace TypiCMS\Modules\Menulinks\Http\Controllers;
 
-use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Request;
 use TypiCMS\Modules\Core\Http\Controllers\BaseApiController;
 use TypiCMS\Modules\Menulinks\Repositories\MenulinkInterface as Repository;
 
@@ -20,7 +20,7 @@ class ApiController extends BaseApiController
      */
     public function index()
     {
-        $id = Input::get('menu_id');
+        $id = Request::input('menu_id');
         $models = $this->repository->allNestedBy('menu_id', $id, [], true);
 
         return response()->json($models, 200);
@@ -33,7 +33,7 @@ class ApiController extends BaseApiController
      */
     public function store()
     {
-        $model = $this->repository->create(Input::all());
+        $model = $this->repository->create(Request::all());
         $error = $model ? false : true;
 
         return response()->json([
@@ -51,7 +51,7 @@ class ApiController extends BaseApiController
      */
     public function update($model)
     {
-        $error = $this->repository->update(Input::all()) ? false : true;
+        $error = $this->repository->update(Request::all()) ? false : true;
 
         return response()->json([
             'error' => $error,

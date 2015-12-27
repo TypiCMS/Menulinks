@@ -45,7 +45,7 @@
     </div>
 
     <div class="col-sm-6">
-        {!! BootForm::select(trans('validation.attributes.page_id'), 'page_id', $selectPages) !!}
+        {!! BootForm::select(trans('validation.attributes.page_id'), 'page_id', Pages::allForSelect()) !!}
         <input type="hidden" name="has_categories" value="0">
         {!! BootForm::checkbox(trans('validation.attributes.has_categories'), 'has_categories') !!}
         {!! BootForm::select(trans('validation.attributes.target'), 'target', ['' => trans('menulinks::global.Active tab'), '_blank' => trans('menulinks::global.New tab')]) !!}

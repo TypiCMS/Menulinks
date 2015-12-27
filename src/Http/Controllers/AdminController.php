@@ -3,8 +3,8 @@
 namespace TypiCMS\Modules\Menulinks\Http\Controllers;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Request;
 use TypiCMS\Modules\Core\Http\Controllers\BaseAdminController;
 use TypiCMS\Modules\Menulinks\Http\Requests\FormRequest;
 use TypiCMS\Modules\Menulinks\Repositories\MenulinkInterface;
